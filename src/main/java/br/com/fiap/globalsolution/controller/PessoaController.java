@@ -89,4 +89,20 @@ public class PessoaController {
         }
         return new ResponseEntity<>(pessoa,HttpStatus.CREATED);
     }
+
+    @Operation(summary = "Exclui uma pessoa por ID")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "200", description = "Pessoa excluída com sucesso",
+                    content = @Content(schema = @Schema())),
+            @ApiResponse(responseCode = "400", description = "Nenhuma pessoa encontrada para o ID fornecido",
+                    content = @Content(schema = @Schema()))
+    })
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Void> deletePessoa(@PathVariable Long id) {
+        boolean salvo = pessoaService.delete(id);
+        if (!salvo) {
+            return new ResponseEntity<>(null, HttpStatus.BAD_REQUEST);
+        }
+        return new ResponseEntity<>(HttpStatus.OK);
+    }
 }
