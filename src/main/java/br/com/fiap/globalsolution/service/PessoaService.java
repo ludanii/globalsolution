@@ -40,6 +40,11 @@ public class PessoaService {
         return pessoa.map(pessoaMapper::pessoaToResponse).orElse(null);
     }
 
+    public PessoaResponse findByCpf(String cpf) {
+        Optional<Pessoa> pessoa = pessoaRepository.findByCpf(cpf);
+        return pessoa.map(pessoaMapper::pessoaToResponse).orElse(null);
+    }
+
     public PessoaResponse update(PessoaRequest pessoaRequest, Long id) {
         Optional<Pessoa> pessoaOptional = pessoaRepository.findById(id);
         if (pessoaOptional.isPresent()) {

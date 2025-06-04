@@ -69,6 +69,23 @@ public class PessoaController {
         return new ResponseEntity<>(pessoa,HttpStatus.OK);
     }
 
+    @Operation(summary = "Retorna uma pessoa por CPF")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "200", description = "Pessoa encontrada com sucesso!",
+                    content = @Content(mediaType = "application/json",
+                            schema = @Schema(implementation = PessoaResponse.class))),
+            @ApiResponse(responseCode = "404", description = "Nenhuma pessoa encontrada para o CPF fornecido!",
+                    content = @Content(schema = @Schema()))
+    })
+    @GetMapping("/cpf/{cpf}")
+    public ResponseEntity<PessoaResponse> readPessoaByCpf(@PathVariable String cpf) {
+        PessoaResponse pessoa = pessoaService.findByCpf(cpf);
+        if (pessoa == null) {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+        return new ResponseEntity<>(pessoa, HttpStatus.OK);
+    }
+
     @Operation(summary = "Atualiza uma pessoa existente")
     @ApiResponses(value = {
             @ApiResponse(responseCode = "201", description = "Pessoa atualizada com sucesso!",

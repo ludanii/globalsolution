@@ -16,6 +16,7 @@ public class User implements UserDetails {
     private Long id;
     private String username;
     private String password;
+    @Enumerated(EnumType.STRING)
     private UserRole role;
 
     public User() {}
@@ -24,6 +25,10 @@ public class User implements UserDetails {
         this.username = username;
         this.password = password;
         this.role = role;
+    }
+
+    public Long getId() {
+        return id;
     }
 
     public void setId(Long id) {

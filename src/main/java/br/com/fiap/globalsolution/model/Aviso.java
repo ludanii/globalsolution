@@ -14,6 +14,7 @@ public class Aviso {
     private Ocorrencia ocorrencia;
     @Enumerated(EnumType.STRING)
     private Gravidade gravidade;
+    @Enumerated(EnumType.STRING)
     private Bairro bairro;
     private LocalDateTime dataHora;
 
