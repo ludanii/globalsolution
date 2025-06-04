@@ -4,6 +4,7 @@ import br.com.fiap.globalsolution.dto.AbrigoRequest;
 import br.com.fiap.globalsolution.dto.AbrigoResponse;
 import br.com.fiap.globalsolution.mapper.AbrigoMapper;
 import br.com.fiap.globalsolution.model.Abrigo;
+import br.com.fiap.globalsolution.model.Voluntario;
 import br.com.fiap.globalsolution.repository.AbrigoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -41,10 +42,15 @@ public class AbrigoService {
     }
 
     public AbrigoResponse update(AbrigoRequest abrigoRequest, Long id) {
-        Optional<Abrigo> abrigo = abrigoRepository.findById(id);
-        if (abrigo.isPresent()) {
-            Abrigo abrigoSalvo = abrigoRepository.save(abrigo.get());
-            return abrigoMapper.abrigoToResponse(abrigoSalvo);
+        Optional<Abrigo> abrigoOptional = abrigoRepository.findById(id);
+        if (abrigoOptional.isPresent()) {
+            Abrigo abrigo = abrigoOptional.get();
+            abrigo.setBairro(abrigoRequest.bairro());
+            abrigo.setCep(abrigoRequest.cep());
+            abrigo.setQtdVagas(abrigoRequest.qtdVagas());
+
+            Abrigo abrigoUpdate = abrigoRepository.save(abrigo);
+            return abrigoMapper.abrigoToResponse(abrigoUpdate);
         }
         return null;
     }

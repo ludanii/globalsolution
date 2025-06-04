@@ -41,10 +41,16 @@ public class AvisoService {
     }
 
     public AvisoResponse update(AvisoRequest avisoRequest, Long id) {
-        Optional<Aviso> aviso = avisoRepository.findById(id);
-        if (aviso.isPresent()) {
-            Aviso avisoSalvo = avisoRepository.save(aviso.get());
-            return avisoMapper.avisoToResponse(avisoSalvo);
+        Optional<Aviso> avisoOptional = avisoRepository.findById(id);
+        if (avisoOptional.isPresent()) {
+            Aviso aviso = avisoOptional.get();
+            aviso.setOcorrencia(avisoRequest.ocorrencia());
+            aviso.setGravidade(avisoRequest.gravidade());
+            aviso.setBairro(avisoRequest.bairro());
+            aviso.setDataHora(avisoRequest.dataHora());
+
+            Aviso avisoUpdate = avisoRepository.save(aviso);
+            return avisoMapper.avisoToResponse(avisoUpdate);
         }
         return null;
     }

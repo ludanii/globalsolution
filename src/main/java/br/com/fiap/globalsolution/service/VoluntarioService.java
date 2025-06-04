@@ -3,6 +3,8 @@ package br.com.fiap.globalsolution.service;
 import br.com.fiap.globalsolution.dto.VoluntarioRequest;
 import br.com.fiap.globalsolution.dto.VoluntarioResponse;
 import br.com.fiap.globalsolution.mapper.VoluntarioMapper;
+import br.com.fiap.globalsolution.model.Abrigo;
+import br.com.fiap.globalsolution.model.Pessoa;
 import br.com.fiap.globalsolution.model.Voluntario;
 import br.com.fiap.globalsolution.repository.VoluntarioRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -41,10 +43,22 @@ public class VoluntarioService {
     }
 
     public VoluntarioResponse update(VoluntarioRequest voluntarioRequest, Long id) {
-        Optional<Voluntario> voluntario = voluntarioRepository.findById(id);
-        if (voluntario.isPresent()) {
-            Voluntario voluntarioSalvo = voluntarioRepository.save(voluntario.get());
-            return voluntarioMapper.voluntarioToResponse(voluntarioSalvo);
+        Optional<Voluntario> voluntarioOptional = voluntarioRepository.findById(id);
+        if (voluntarioOptional.isPresent()) {
+            Voluntario voluntario = voluntarioOptional.get();
+
+            Pessoa pessoa = new Pessoa();
+            pessoa.setIdPessoa(voluntarioRequest.idPessoa());
+            voluntario.setPessoa(pessoa);
+
+            voluntario.setFuncao(voluntarioRequest.funcao());
+
+            Abrigo abrigo = new Abrigo();
+            abrigo.setIdAbrigo(voluntarioRequest.idAbrigo());
+            voluntario.setAbrigo(abrigo);
+
+            Voluntario voluntarioUpdate = voluntarioRepository.save(voluntario);
+            return voluntarioMapper.voluntarioToResponse(voluntarioUpdate);
         }
         return null;
     }
