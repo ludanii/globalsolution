@@ -32,9 +32,18 @@ public class SecurityConfiguration {
                         .sessionCreationPolicy(SessionCreationPolicy.STATELESS)
                 )
                 .authorizeHttpRequests(authorize -> authorize
+                        // Libera o Swagger UI e a documentação da API
+                        .requestMatchers(
+                                "/v3/api-docs/**",
+                                "/swagger-ui/**",
+                                "/swagger-ui.html"
+                        ).permitAll()
                         // cria regra para endpoint específico
                         .requestMatchers(HttpMethod.POST, "/auth/**").permitAll()
                         .requestMatchers(HttpMethod.POST, "/pessoas").hasRole("ADMIN")
+                        .requestMatchers(HttpMethod.POST, "/abrigos").hasRole("ADMIN")
+                        .requestMatchers(HttpMethod.POST, "/avisos").hasRole("ADMIN")
+                        .requestMatchers(HttpMethod.POST, "/voluntarios").hasRole("ADMIN")
                         .requestMatchers(HttpMethod.GET, "/users").hasRole("ADMIN")
                         .anyRequest().authenticated()
                 )
