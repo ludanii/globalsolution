@@ -11,6 +11,8 @@ public record PessoaResponse(
         String cpf,
         LocalDate dataNascimento,
         Bairro bairro,
+        String cidade,
+        String estado,
         String profissao,
         TipoDeficiencia pcd
 ) {

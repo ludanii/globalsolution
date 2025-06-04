@@ -23,6 +23,8 @@ public class PessoaMapper {
                 pessoa.getCpf(),
                 pessoa.getDataNascimento(),
                 pessoa.getBairro(),
+                pessoa.getCidade(),
+                pessoa.getEstado(),
                 pessoa.getProfissao(),
                 pessoa.getPcd());
     }
