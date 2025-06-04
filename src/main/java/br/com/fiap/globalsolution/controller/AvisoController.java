@@ -29,11 +29,11 @@ public class AvisoController {
 
     @Operation(summary = "Cria um novo aviso")
     @ApiResponses(value = {
-            @ApiResponse(responseCode = "201", description = "Aviso criado com sucesso",
+            @ApiResponse(responseCode = "201", description = "Aviso criado com sucesso!",
                     content = @Content(
                             mediaType = "application/json",
                             schema = @Schema(implementation = Aviso.class))),
-            @ApiResponse(responseCode = "400", description = "Parâmetros informados são inválidos",
+            @ApiResponse(responseCode = "400", description = "Parâmetros informados são inválidos!",
                     content = @Content(schema = @Schema()))
     })
     @PostMapping
@@ -53,11 +53,11 @@ public class AvisoController {
     // @RequestParam localhost:8080/avisos/?id=1
     @Operation(summary = "Retorna um aviso por ID")
     @ApiResponses(value = {
-            @ApiResponse(responseCode = "200", description = "Aviso encontrado com sucesso",
+            @ApiResponse(responseCode = "200", description = "Aviso encontrado com sucesso!",
                     content = @Content(
                             mediaType = "application/json",
                             schema = @Schema(implementation = AvisoResponse.class))),
-            @ApiResponse(responseCode = "404", description = "Nenhum aviso encontrado para o ID fornecido",
+            @ApiResponse(responseCode = "404", description = "Nenhum aviso encontrado para o ID fornecido!",
                     content = @Content(schema = @Schema()))
     })
     @GetMapping("/{id}")
@@ -71,11 +71,11 @@ public class AvisoController {
 
     @Operation(summary = "Atualiza um aviso existente")
     @ApiResponses(value = {
-            @ApiResponse(responseCode = "201", description = "Aviso atualizado com sucesso",
+            @ApiResponse(responseCode = "201", description = "Aviso atualizado com sucesso!",
                     content = @Content(
                             mediaType = "application/json",
                             schema = @Schema(implementation = Aviso.class))),
-            @ApiResponse(responseCode = "400", description = "Nenhum aviso encontrado para o ID fornecido",
+            @ApiResponse(responseCode = "400", description = "Nenhum aviso encontrado para o ID fornecido!",
                     content = @Content(schema = @Schema()))
     })
     @PutMapping("/{id}")
@@ -90,9 +90,9 @@ public class AvisoController {
 
     @Operation(summary = "Exclui um aviso por ID")
     @ApiResponses(value = {
-            @ApiResponse(responseCode = "200", description = "Aviso excluído com sucesso",
+            @ApiResponse(responseCode = "200", description = "Aviso excluído com sucesso!",
                     content = @Content(schema = @Schema())),
-            @ApiResponse(responseCode = "400", description = "Nenhum aviso encontrado para o ID fornecido",
+            @ApiResponse(responseCode = "400", description = "Nenhum aviso encontrado para o ID fornecido!",
                     content = @Content(schema = @Schema()))
     })
     @DeleteMapping("/{id}")

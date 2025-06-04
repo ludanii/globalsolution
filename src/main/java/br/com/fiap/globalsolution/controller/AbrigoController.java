@@ -29,11 +29,11 @@ public class AbrigoController {
 
     @Operation(summary = "Cria um novo abrigo")
     @ApiResponses(value = {
-            @ApiResponse(responseCode = "201", description = "Abrigo criado com sucesso",
+            @ApiResponse(responseCode = "201", description = "Abrigo criado com sucesso!",
                     content = @Content(
                             mediaType = "application/json",
                             schema = @Schema(implementation = Abrigo.class))),
-            @ApiResponse(responseCode = "400", description = "Parâmetros informados são inválidos",
+            @ApiResponse(responseCode = "400", description = "Parâmetros informados são inválidos!",
                     content = @Content(schema = @Schema()))
     })
     @PostMapping
@@ -53,11 +53,11 @@ public class AbrigoController {
     // @RequestParam localhost:8080/abrigos/?id=1
     @Operation(summary = "Retorna um abrigo por ID")
     @ApiResponses(value = {
-            @ApiResponse(responseCode = "200", description = "Abrigo encontrado com sucesso",
+            @ApiResponse(responseCode = "200", description = "Abrigo encontrado com sucesso!",
                     content = @Content(
                             mediaType = "application/json",
                             schema = @Schema(implementation = AbrigoResponse.class))),
-            @ApiResponse(responseCode = "404", description = "Nenhum abrigo encontrado para o ID fornecido",
+            @ApiResponse(responseCode = "404", description = "Nenhum abrigo encontrado para o ID fornecido!",
                     content = @Content(schema = @Schema()))
     })
     @GetMapping("/{id}")
@@ -71,11 +71,11 @@ public class AbrigoController {
 
     @Operation(summary = "Atualiza um abrigo existente")
     @ApiResponses(value = {
-            @ApiResponse(responseCode = "201", description = "Abrigo atualizado com sucesso",
+            @ApiResponse(responseCode = "201", description = "Abrigo atualizado com sucesso!",
                     content = @Content(
                             mediaType = "application/json",
                             schema = @Schema(implementation = Abrigo.class))),
-            @ApiResponse(responseCode = "400", description = "Nenhum abrigo encontrado para o ID fornecido",
+            @ApiResponse(responseCode = "400", description = "Nenhum abrigo encontrado para o ID fornecido!",
                     content = @Content(schema = @Schema()))
     })
     @PutMapping("/{id}")
@@ -90,9 +90,9 @@ public class AbrigoController {
 
     @Operation(summary = "Exclui um abrigo por ID")
     @ApiResponses(value = {
-            @ApiResponse(responseCode = "200", description = "Abrigo excluído com sucesso",
+            @ApiResponse(responseCode = "200", description = "Abrigo excluído com sucesso!",
                     content = @Content(schema = @Schema())),
-            @ApiResponse(responseCode = "400", description = "Nenhum abrigo encontrado para o ID fornecido",
+            @ApiResponse(responseCode = "400", description = "Nenhum abrigo encontrado para o ID fornecido!",
                     content = @Content(schema = @Schema()))
     })
     @DeleteMapping("/{id}")

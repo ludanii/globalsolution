@@ -4,7 +4,6 @@ import br.com.fiap.globalsolution.dto.AbrigoRequest;
 import br.com.fiap.globalsolution.dto.AbrigoResponse;
 import br.com.fiap.globalsolution.mapper.AbrigoMapper;
 import br.com.fiap.globalsolution.model.Abrigo;
-import br.com.fiap.globalsolution.model.Voluntario;
 import br.com.fiap.globalsolution.repository.AbrigoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;

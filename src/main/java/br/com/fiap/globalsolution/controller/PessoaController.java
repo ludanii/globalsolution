@@ -90,9 +90,9 @@ public class PessoaController {
 
     @Operation(summary = "Exclui uma pessoa por ID")
     @ApiResponses(value = {
-            @ApiResponse(responseCode = "200", description = "Pessoa excluída com sucesso",
+            @ApiResponse(responseCode = "200", description = "Pessoa excluída com sucesso!",
                     content = @Content(schema = @Schema())),
-            @ApiResponse(responseCode = "400", description = "Nenhuma pessoa encontrada para o ID fornecido",
+            @ApiResponse(responseCode = "400", description = "Nenhuma pessoa encontrada para o ID fornecido!",
                     content = @Content(schema = @Schema()))
     })
     @DeleteMapping("/{id}")

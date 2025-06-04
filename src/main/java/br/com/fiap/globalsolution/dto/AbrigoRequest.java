@@ -6,7 +6,7 @@ import jakarta.validation.constraints.NotNull;
 
 public record AbrigoRequest(
         @NotNull(message = "O bairro é obrigatório.") Bairro bairro,
-        @NotBlank(message = "O CEP é obrigatório.")String cep,
+        @NotBlank(message = "O CEP é obrigatório.") String cep,
         @NotNull(message = "A quantidade de vagas é obrigatório.") Integer qtdVagas
 ) {
 }
