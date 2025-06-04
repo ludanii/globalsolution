@@ -1,6 +1,5 @@
 package br.com.fiap.globalsolution.controller;
 
-
 import br.com.fiap.globalsolution.dto.PessoaRequest;
 import br.com.fiap.globalsolution.dto.PessoaResponse;
 import br.com.fiap.globalsolution.model.Pessoa;
@@ -20,7 +19,6 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import io.swagger.v3.oas.annotations.tags.Tag;
-
 
 @RestController
 @RequestMapping(value = "/pessoas")
