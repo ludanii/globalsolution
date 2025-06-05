@@ -1,7 +1,6 @@
 FROM gradle:jdk21-graal AS BUILD
 WORKDIR /usr/app/
 COPY . .
-RUN gradle build -x test
 
 FROM openjdk:21-jdk-slim
 COPY --from=BUILD /usr/app .
