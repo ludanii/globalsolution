@@ -1,13 +1,9 @@
-FROM gradle:jdk21-graal AS build
+FROM gradle:jdk21-graal AS BUILD
 WORKDIR /usr/app/
+COPY . .
 
-COPY settings.gradle build.gradle ./
-COPY src ./src
-
-RUN ./gradlew build --no-daemon --stacktrace
-
+RUN gradle build
 FROM openjdk:21-jdk-slim
-WORKDIR /app
-COPY --from=build /usr/app/build/libs/globalsolution-0.0.1-SNAPSHOT.jar app.jar
+COPY --from=BUILD /usr/app .
 EXPOSE 8080
-ENTRYPOINT ["java", "-jar", "app.jar"]
+ENTRYPOINT exec java -jar build/libs/globalsolution-0.0.1-SNAPSHOT.jar
