@@ -55,6 +55,7 @@ public class PessoaService {
             pessoa.setBairro(pessoaRequest.bairro());
             pessoa.setProfissao(pessoaRequest.profissao());
             pessoa.setPcd(pessoaRequest.pcd());
+            pessoa.setSenha(pessoaRequest.senha());
 
             Pessoa pessoaUpdate = pessoaRepository.save(pessoa);
             return pessoaMapper.pessoaToResponse(pessoaUpdate);

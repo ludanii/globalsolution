@@ -13,6 +13,7 @@ public class PessoaMapper {
         pessoa.setBairro(pessoaRequest.bairro());
         pessoa.setProfissao(pessoaRequest.profissao());
         pessoa.setPcd(pessoaRequest.pcd());
+        pessoa.setSenha(pessoaRequest.senha());
         return pessoa;
     }
 
@@ -26,6 +27,7 @@ public class PessoaMapper {
                 pessoa.getCidade(),
                 pessoa.getEstado(),
                 pessoa.getProfissao(),
-                pessoa.getPcd());
+                pessoa.getPcd(),
+                pessoa.getSenha());
     }
 }

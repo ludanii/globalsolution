@@ -22,6 +22,7 @@ public class Pessoa {
         private String profissao;
         @Enumerated(EnumType.STRING)
         private TipoDeficiencia pcd;
+        private String senha;
 
     public Long getIdPessoa() {
         return idPessoa;
@@ -93,5 +94,13 @@ public class Pessoa {
 
     public void setPcd(TipoDeficiencia pcd) {
         this.pcd = pcd;
+    }
+
+    public String getSenha() {
+        return senha;
+    }
+
+    public void setSenha(String senha) {
+        this.senha = senha;
     }
 }
