@@ -20,6 +20,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequestMapping(value = "/avisos")
 @Tag(name = "api-avisos")
@@ -47,6 +49,12 @@ public class AvisoController {
         Pageable pageable = PageRequest
                 .of(pageNumber, 2, Sort.by("ocorrencia").ascending());
         return new ResponseEntity<>(avisoService.findAll(pageable), HttpStatus.OK);
+    }
+
+    @Operation(summary = "Lista todos os avisos")
+    @GetMapping("/lista")
+    public ResponseEntity<List<Aviso>> readAvisos() {
+        return new ResponseEntity<>(avisoService.findAll(), HttpStatus.OK);
     }
 
     // @PathVariable localhost:8080/avisos/1
