@@ -4,12 +4,14 @@ import br.com.fiap.globalsolution.dto.AbrigoRequest;
 import br.com.fiap.globalsolution.dto.AbrigoResponse;
 import br.com.fiap.globalsolution.mapper.AbrigoMapper;
 import br.com.fiap.globalsolution.model.Abrigo;
+import br.com.fiap.globalsolution.model.Aviso;
 import br.com.fiap.globalsolution.repository.AbrigoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -29,6 +31,14 @@ public class AbrigoService {
     public Page<AbrigoResponse> findAll(Pageable pageable) {
         return abrigoRepository.findAll(pageable).map(abrigoMapper::abrigoToResponse);
     }
+
+    public List<AbrigoResponse> findAll() {
+            return abrigoRepository.findAll()
+                    .stream()
+                    .map(abrigoMapper::abrigoToResponse)
+                    .toList();
+    }
+
 
     public Abrigo findAbrigoById(Long id) {
         Optional<Abrigo> abrigo = abrigoRepository.findById(id);

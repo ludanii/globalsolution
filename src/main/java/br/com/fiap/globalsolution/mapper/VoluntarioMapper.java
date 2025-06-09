@@ -13,12 +13,15 @@ public class VoluntarioMapper {
         Pessoa pessoa = new Pessoa();
         pessoa.setIdPessoa(voluntarioRequest.idPessoa());
 
-        Abrigo abrigo = new Abrigo();
-        abrigo.setIdAbrigo(voluntarioRequest.idAbrigo());
-
         voluntario.setPessoa(pessoa);
         voluntario.setFuncao(voluntarioRequest.funcao());
-        voluntario.setAbrigo(abrigo);
+
+        if (voluntarioRequest.idAbrigo() != null) {
+            Abrigo abrigo = new Abrigo();
+            abrigo.setIdAbrigo(voluntarioRequest.idAbrigo());
+            voluntario.setAbrigo(abrigo);
+        }
+
         return voluntario;
     }
 
@@ -28,6 +31,6 @@ public class VoluntarioMapper {
                 voluntario.getPessoa().getIdPessoa(),
                 voluntario.getPessoa().getNome(),
                 voluntario.getFuncao(),
-                voluntario.getAbrigo().getIdAbrigo());
+                voluntario.getAbrigo() != null ? voluntario.getAbrigo().getIdAbrigo() : null);
     }
 }

@@ -23,6 +23,17 @@ public class Pessoa {
         @Enumerated(EnumType.STRING)
         private TipoDeficiencia pcd;
         private String senha;
+        @ManyToOne
+        @JoinColumn(name = "id_abrigo")
+        private Abrigo abrigo;
+
+    public Abrigo getAbrigo() {
+        return abrigo;
+    }
+
+    public void setAbrigo(Abrigo abrigo) {
+        this.abrigo = abrigo;
+    }
 
     public Long getIdPessoa() {
         return idPessoa;

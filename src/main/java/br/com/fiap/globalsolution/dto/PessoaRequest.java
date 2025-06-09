@@ -15,6 +15,7 @@ public record PessoaRequest(
         @NotNull(message = "O bairro é obrigatório.") Bairro bairro,
         @NotBlank(message = "A profissão é obrigatória.") String profissao,
         @NotNull(message = "O tipo de deficiência é obrigatório.") TipoDeficiencia pcd,
-        @NotBlank(message = "A senha é obrigatória.") String senha
-        ) {
+        @NotBlank(message = "A senha é obrigatória.") String senha,
+        Long idAbrigo
+) {
 }

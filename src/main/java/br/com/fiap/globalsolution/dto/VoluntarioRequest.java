@@ -6,7 +6,7 @@ import jakarta.validation.constraints.NotNull;
 public record VoluntarioRequest(
         @NotNull(message = "O ID da pessoa é obrigatório.") Long idPessoa,
         @NotNull(message = "A função é obrigatória.") Funcao funcao,
-        @NotNull(message = "O ID do abrigo é obrigatório.") Long idAbrigo
+        Long idAbrigo
 ) {
 }
 

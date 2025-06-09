@@ -48,4 +48,6 @@ public class Voluntario {
     public void setAbrigo(Abrigo abrigo) {
         this.abrigo = abrigo;
     }
+
+
 }

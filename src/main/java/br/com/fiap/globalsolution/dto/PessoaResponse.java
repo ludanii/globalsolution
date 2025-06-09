@@ -15,6 +15,7 @@ public record PessoaResponse(
         String estado,
         String profissao,
         TipoDeficiencia pcd,
-        String senha
+        String senha,
+        Long idAbrigo
 ) {
 }

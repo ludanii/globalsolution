@@ -4,6 +4,7 @@ import br.com.fiap.globalsolution.dto.VoluntarioRequest;
 import br.com.fiap.globalsolution.dto.VoluntarioResponse;
 import br.com.fiap.globalsolution.mapper.VoluntarioMapper;
 import br.com.fiap.globalsolution.model.Abrigo;
+import br.com.fiap.globalsolution.model.Aviso;
 import br.com.fiap.globalsolution.model.Pessoa;
 import br.com.fiap.globalsolution.model.Voluntario;
 import br.com.fiap.globalsolution.repository.VoluntarioRepository;
@@ -12,6 +13,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -31,6 +33,14 @@ public class VoluntarioService {
     public Page<VoluntarioResponse> findAll(Pageable pageable) {
         return voluntarioRepository.findAll(pageable).map(voluntarioMapper::voluntarioToResponse);
     }
+
+    public List<VoluntarioResponse> findAll() {
+        return voluntarioRepository.findAll()
+            .stream()
+            .map(voluntarioMapper::voluntarioToResponse)
+            .toList();
+    }
+
 
     public Voluntario findVoluntarioById(Long id) {
         Optional<Voluntario> voluntario = voluntarioRepository.findById(id);

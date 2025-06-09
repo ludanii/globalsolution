@@ -16,6 +16,16 @@ public class Abrigo {
     private Integer qtdVagas;
     @OneToMany(mappedBy = "abrigo")
     private List<Voluntario> voluntarios;
+    @OneToMany(mappedBy = "abrigo")
+    private List<Pessoa> residentes;
+
+    public List<Pessoa> getResidentes() {
+        return residentes;
+    }
+
+    public void setResidentes(List<Pessoa> residentes) {
+        this.residentes = residentes;
+    }
 
     public Long getIdAbrigo() {
         return idAbrigo;

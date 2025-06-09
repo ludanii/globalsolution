@@ -3,6 +3,7 @@ package br.com.fiap.globalsolution.controller;
 import br.com.fiap.globalsolution.dto.AbrigoRequest;
 import br.com.fiap.globalsolution.dto.AbrigoResponse;
 import br.com.fiap.globalsolution.model.Abrigo;
+import br.com.fiap.globalsolution.model.Aviso;
 import br.com.fiap.globalsolution.service.AbrigoService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.Content;
@@ -19,6 +20,8 @@ import org.springframework.data.domain.Sort;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @RequestMapping(value = "/abrigos")
@@ -47,6 +50,11 @@ public class AbrigoController {
         Pageable pageable = PageRequest
                 .of(pageNumber, 2, Sort.by("bairro").ascending());
         return new ResponseEntity<>(abrigoService.findAll(pageable), HttpStatus.OK);
+    }
+    @Operation(summary = "Lista todos os abrigos")
+    @GetMapping("/lista")
+    public ResponseEntity<List<AbrigoResponse>> readAbrigo() {
+        return new ResponseEntity<>(abrigoService.findAll(), HttpStatus.OK);
     }
 
     // @PathVariable localhost:8080/abrigos/1

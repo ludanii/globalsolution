@@ -2,6 +2,7 @@ package br.com.fiap.globalsolution.controller;
 
 import br.com.fiap.globalsolution.dto.VoluntarioRequest;
 import br.com.fiap.globalsolution.dto.VoluntarioResponse;
+import br.com.fiap.globalsolution.model.Abrigo;
 import br.com.fiap.globalsolution.model.Voluntario;
 import br.com.fiap.globalsolution.service.VoluntarioService;
 import io.swagger.v3.oas.annotations.Operation;
@@ -19,6 +20,8 @@ import org.springframework.data.domain.Sort;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @RequestMapping(value = "/voluntarios")
@@ -47,6 +50,12 @@ public class VoluntarioController {
         Pageable pageable = PageRequest
                 .of(pageNumber, 2, Sort.by("funcao").ascending());
         return new ResponseEntity<>(voluntarioService.findAll(pageable), HttpStatus.OK);
+    }
+
+    @Operation(summary = "Lista todos os voluntario")
+    @GetMapping("/lista")
+    public ResponseEntity<List<VoluntarioResponse>> readVoluntario() {
+        return new ResponseEntity<>(voluntarioService.findAll(), HttpStatus.OK);
     }
 
     // @PathVariable localhost:8080/voluntarios/1

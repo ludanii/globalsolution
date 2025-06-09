@@ -4,6 +4,8 @@ import br.com.fiap.globalsolution.dto.AbrigoRequest;
 import br.com.fiap.globalsolution.dto.AbrigoResponse;
 import br.com.fiap.globalsolution.model.Abrigo;
 import br.com.fiap.globalsolution.model.Voluntario;
+import br.com.fiap.globalsolution.model.Pessoa;
+
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -23,13 +25,19 @@ public class AbrigoMapper {
                 .map(Voluntario::getIdVoluntario)
                 .collect(Collectors.toList())
                 : List.of();
+        List<Long> idsPessoas = abrigo.getResidentes() != null
+                ? abrigo.getResidentes().stream()
+                .map(Pessoa::getIdPessoa)
+                .collect(Collectors.toList())
+                : List.of();
 
         return new AbrigoResponse(
                 abrigo.getIdAbrigo(),
                 abrigo.getBairro(),
                 abrigo.getCep(),
                 abrigo.getQtdVagas(),
-                idsVoluntarios
+                idsVoluntarios,
+                idsPessoas
         );
     }
 }
